@@ -33,7 +33,9 @@ class UserAllViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(mixins.UpdateModelMixin,
+                  mixins.RetrieveModelMixin,
+                  mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     queryset = Posts.objects.all()
     serializer_class = PostsSerializer
     permission_classes = (IsAuthenticated,)
