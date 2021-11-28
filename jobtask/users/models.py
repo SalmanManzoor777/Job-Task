@@ -91,22 +91,9 @@ class Profile(models.Model):
     def __unicode__(self):
         return u'Profile of user: {0}'.format(self.user.email)
 
+class Posts(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=120, blank=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-def create_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-
-#post_save.connect(create_profile, sender=User)
-
-
-def delete_user(sender, instance=None, **kwargs):
-    try:
-        instance.user
-    except User.DoesNotExist:
-        pass
-    else:
-        instance.user.delete()
-
-
-#post_delete.connect(delete_user, sender=Profile)

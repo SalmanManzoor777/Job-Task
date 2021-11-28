@@ -18,10 +18,12 @@ from django.urls import path, include
 from users.views import create_auth
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from rest_framework import routers
-from users.views import UserAllViewSet
+from users.views import UserAllViewSet, PostViewSet
 router = routers.DefaultRouter()
 
 router.register(r'get_all_users', UserAllViewSet)
+router.register(r'get_post_data', PostViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
