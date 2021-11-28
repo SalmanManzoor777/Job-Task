@@ -5,6 +5,7 @@ from rest_framework import mixins, status, viewsets
 from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 # Create your views here.
 
 
